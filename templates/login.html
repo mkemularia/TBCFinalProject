@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+LOG IN
+{% endblock %}
+
+{% block container %}
+<div class="d-flex justify-content-center align-items-center vh-100" style="margin-top: -50px;">
+  <div class="card shadow p-4 w-100" style="max-width: 400px;">
+
+    <h3 class="text-center mb-4">Log In to <strong>MELODIKA</strong></h3>
+
+
+    <form method="post" enctype="multipart/form-data" class="col p-0">
+        {{ form.hidden_tag() }}
+
+        <div class="row mt-2">
+            {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+        </div>
+        <div class="row mt-2">
+            {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+        </div>
+        <div class="row mt-4">
+            {{ form.login(class="btn btn-primary w-100 rounded-pill") }}
+        </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

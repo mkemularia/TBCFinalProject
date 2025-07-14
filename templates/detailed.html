@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title%}
+DETAILS
+{% endblock %}
+
+{% block container %}
+<div class="container my-5">
+    <div class="row align-items-start g-4">
+
+        <div class="col-md-6 text-center">
+            <img src="/static/images/{{ product['img'] }}" alt="{{ product['name'] }}" class="img-fluid rounded shadow">
+        </div>
+
+        <div class="col-md-6 align-self-start">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title fw-bold">{{ product['name'] }}</h2>
+                    <h4 class="text-muted mb-3">Price: <span class="text-primary">{{ product['price'] }} $</span></h4>
+                    <form action="/add_to_my_bag/{{ product.id }}" method="post">
+                        <input type="hidden" name="item_id" value="{{ product.id }}">
+                        <button type="submit" class="btn btn-outline-primary mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z"/>
+                            </svg>
+                        </button>
+                    </form>
+                    {% if comments %}
+                    <h5 class="mt-4 mb-2">Comments</h5>
+                    <ul class="list-group">
+                        {% for comment in comments %}
+                        <li class="list-group-item">{{ comment.text }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="text-muted mt-4">No comments yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

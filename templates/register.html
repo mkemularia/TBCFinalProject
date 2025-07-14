@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+REGISTER
+{% endblock %}
+
+{% block container %}
+
+<div class="d-flex justify-content-center mt-5 mb-5">
+    <div class="card shadow p-4 w-100" style="max-width: 500px;">
+
+        <h3 class="text-center mb-4">Create Your Account</h3>
+
+        <form method="post" enctype="multipart/form-data" class="col p-0">
+            {{ form.hidden_tag() }}
+
+            {% for errors in form.errors.values() %}
+            <div class="alert alert-danger">
+                {% for error in errors %}
+                <div class="text-danger">{{error}}<br></div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+            <div class="row mt-2">
+                {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+            </div>
+            <div class="row mt-2">
+                {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+            </div>
+            <div class="row mt-2">
+                {{ form.repeat_password(class="form-control", placeholder=form.repeat_password.label.text) }}
+            </div>
+            <div class="row mt-4">
+                {{ form.submit(class="btn btn-primary w-100 rounded-pill") }}
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}
+

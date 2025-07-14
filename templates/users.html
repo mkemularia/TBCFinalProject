@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title%}
+USERS
+{% endblock %}
+
+{% block container %}
+<div class="container">
+    <div class="navbar-brand fw-bold fs-4 mt-5">Users</div>
+    <table class="table table-striped-columns mt-3 mb-5">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">ROLE</th>
+            <th scope="col">EDIT</th>
+        </tr>
+        </thead>
+        {% for user in users %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ user['id'] }}</th>
+            <td>{{ user['username'] }}</td>
+            <td>{{ user['role'] }}</td>
+            <td><a href="/delete_user/{{ user['id'] }}" class="btn btn-danger btn-sm">
+                <i class="bi bi-trash"></i>DELETE</a></td>
+
+        {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

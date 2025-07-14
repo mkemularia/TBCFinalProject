@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title%}
+ADD COMMENT
+{% endblock %}
+
+{% block container %}
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Add Comment</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.product_id.label(class="form-label") }}
+            {{ form.product_id(class="form-select") }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.text.label(class="form-label") }}
+            {{ form.text(class="form-control") }}
+        </div>
+
+        <div>
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
